@@ -1,0 +1,21 @@
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 2rem 2rem 2rem;
+  color: white;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter div {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter select {
+  background-color: rgb(25, 26, 45);
+  color: white;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+}
