@@ -7,10 +7,12 @@ import getAllCountries from "./api/utils";
 import CountriesList from "./components/CountriesList";
 import Pagination from "./components/Pagination";
 import LoadingSpinner from "./components/LoadingSpinner";
+import ErrorMsg from "./components/ErrorMsg";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
@@ -19,8 +21,13 @@ function App() {
     setIsLoading(true);
     async function getData() {
       const apiData = await getAllCountries();
-      setCountries(apiData);
-      setIsLoading(false);
+      if (apiData === `something wrong`) {
+        setErrorMsg("Something went wrong, sorry");
+        setIsLoading(false);
+      } else {
+        setCountries(apiData);
+        setIsLoading(false);
+      }
     }
     getData();
   }, []);
@@ -58,10 +65,13 @@ function App() {
         onFilterValueSelected={onFilterValueSelected}
         setCurrentPage={setCurrentPage}
       />
+
       {isLoading ? (
         <LoadingSpinner />
-      ) : (
+      ) : countries.length > 1 ? (
         <CountriesList data={currentCountries} />
+      ) : (
+        <ErrorMsg errorMsg={errorMsg} />
       )}
 
       <Pagination
