@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  align-items: center;
+  color: #fdfdfd;
+  background-color: #191a2d;
+  padding: 1rem;
+  width: 100%;
+  gap: 1rem;
+}
+
+.footer ion-icon {
+  font-size: 25px;
+}
+
+.footer a:visited {
+  color: white;
+}

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
-import Header from "./components/Header";
-import Filter from "./components/Filter";
+import Header from "./components/Header/Header";
+import Filter from "./components/Filter/Filter";
 import getAllCountries from "./api/utils";
-import CountriesList from "./components/CountriesList";
-import Pagination from "./components/Pagination";
-import LoadingSpinner from "./components/LoadingSpinner";
-import ErrorMsg from "./components/ErrorMsg";
+import CountriesList from "./components/CountriesList/CountriesList";
+import Pagination from "./components/Pagination/Pagination";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import ErrorMsg from "./components/ErrorMsg/ErrorMsg";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,6 +81,7 @@ function App() {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       />
+      <Footer />
     </div>
   );
 }

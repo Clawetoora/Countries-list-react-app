@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from "../Card/Card";
 import classes from "./CountriesList.module.css";
 const CountriesList = ({ data }) => {
   return (
