@@ -6,17 +6,21 @@ import Filter from "./components/Filter";
 import getAllCountries from "./api/utils";
 import CountriesList from "./components/CountriesList";
 import Pagination from "./components/Pagination";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
   const [countries, setCountries] = useState([]);
   const [filter, setFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
 
   useEffect(() => {
+    setIsLoading(true);
     async function getData() {
       const apiData = await getAllCountries();
       setCountries(apiData);
+      setIsLoading(false);
     }
     getData();
   }, []);
@@ -54,11 +58,12 @@ function App() {
         onFilterValueSelected={onFilterValueSelected}
         setCurrentPage={setCurrentPage}
       />
-      {countries.length === 0 ? (
-        <div>Loading...</div>
+      {isLoading ? (
+        <LoadingSpinner />
       ) : (
         <CountriesList data={currentCountries} />
       )}
+
       <Pagination
         totalCountries={filteredCountries.length}
         countriesPerPage={countriesPerPage}
