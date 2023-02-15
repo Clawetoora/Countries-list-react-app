@@ -1,5 +1,7 @@
 # visualized representation of countries react app
+
 features:
+
 1. fetching data from api.
 2. displaying the data.
 3. making the data filtered with front-end filters.
